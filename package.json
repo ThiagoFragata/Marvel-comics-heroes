@@ -4,17 +4,19 @@
     "private": true,
     "husky": {
         "hooks": {
-          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
-      },
+    },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "commit": "git add . && git cz"
+        "commit": "git add . && git cz && git push"
     },
     "dependencies": {
+        "axios": "^0.21.1",
+        "md5": "^2.3.0",
         "next": "11.0.1",
         "react": "17.0.2",
         "react-dom": "17.0.2"
@@ -22,6 +24,7 @@
     "devDependencies": {
         "@commitlint/cli": "^12.1.4",
         "@commitlint/config-conventional": "^12.1.4",
+        "@types/md5": "^2.3.1",
         "@types/react": "17.0.14",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "7.31.0",
