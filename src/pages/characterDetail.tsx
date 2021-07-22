@@ -4,22 +4,16 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { Header } from "../components/Static/Header";
-import { SectionTitle } from "../components/Static/SectionTitle";
-import { ComicCard } from "../components/Static/ComicCard";
-import { Footer } from "../components/Static/Footer";
-
 import { Container, Content, Grid } from "../styles/CharacterDetailsStyles";
 import { GlobalStyle } from "../styles/globals";
 
-const timeStamp = Math.floor(Date.now() / 1000);
-const privateKey = "0eb8fba0c55ecdd5ea438a2c7add3ade14481425";
-const publicKey = "20a812bb3e9adaf952b5a9af769aeb94";
-const marvelKey = timeStamp + privateKey + publicKey;
-const hash = md5(marvelKey);
+import { api, marvelApi, token } from "../services/api";
 
-import md5 from "md5";
-import { api } from "../services/api";
+import { Header } from "../ComponentsStatic/Header";
+import { ComicCard } from "../ComponentsStatic/ComicCard";
+import { Footer } from "../ComponentsStatic/Footer";
+import { SectionTitle } from "../ComponentsStatic/SectionTitle";
+import { Spinner } from "../ComponentsStatic/Spinner";
 
 interface Character {
     name: string;
@@ -43,6 +37,7 @@ export default function CharacterDetail() {
     const router = useRouter();
     const { id } = router.query;
 
+    const [hasConnect, setHasConnect] = useState(false);
     const [hasSpinner, setHasSpinner] = useState(false);
     const [characterDetails, setCharacterDetails] = useState<Character>();
     const [comics, setComics] = useState<Comics[]>([]);
@@ -51,7 +46,7 @@ export default function CharacterDetail() {
         setHasSpinner(true);
 
         api.get(
-            `characters/${id}?&ts=${timeStamp}&apikey=${publicKey}&hash=${hash}`
+            `characters/${id}?&ts=${marvelApi.timeStamp}&apikey=${marvelApi.publicKey}&hash=${token}`
         )
             .then((response) => {
                 setCharacterDetails(response.data.data.results[0]);
@@ -61,7 +56,7 @@ export default function CharacterDetail() {
             });
 
         api.get(
-            `characters/${id}/comics?&ts=${timeStamp}&apikey=${publicKey}&hash=${hash}`
+            `characters/${id}/comics?&ts=${marvelApi.timeStamp}&apikey=${marvelApi.publicKey}&hash=${token}`
         )
             .then((response) => {
                 setComics(response.data.data.results);
@@ -76,7 +71,7 @@ export default function CharacterDetail() {
     return (
         <>
             <Head>
-                <title>Detalhes Hero</title>
+                <title>Details character</title>
                 <meta
                     name="description"
                     content="Aqui você encontra seu heroi da Marvel e tudo mais!"
@@ -89,51 +84,57 @@ export default function CharacterDetail() {
             </Head>
             <Header />
             <Container>
-                {hasSpinner ? (
-                    <h1>Loading</h1>
+                {hasConnect ? (
+                    <SectionTitle title="Error in connection API" />
                 ) : (
                     <>
-                        {characterDetails && (
+                        {hasSpinner ? (
+                            <Spinner />
+                        ) : (
                             <>
-                                <SectionTitle
-                                    title={`Um pouco sobre ${characterDetails.name}`}
-                                />
+                                {characterDetails && (
+                                    <>
+                                        <SectionTitle title="About" />
 
-                                <Content>
-                                    <div className="containerImage">
-                                        <img
-                                            src={`${characterDetails.thumbnail.path}/standard_fantastic.${characterDetails.thumbnail.extension}`}
-                                            alt={`Imagem de ${characterDetails.name}`}
+                                        <Content>
+                                            <div className="containerImage">
+                                                <img
+                                                    src={`${characterDetails.thumbnail.path}/standard_fantastic.${characterDetails.thumbnail.extension}`}
+                                                    alt={`Imagem de ${characterDetails.name}`}
+                                                />
+                                            </div>
+
+                                            <div className="context">
+                                                <div className="name">
+                                                    <h2>
+                                                        {characterDetails.name}
+                                                    </h2>
+                                                </div>
+                                                <div className="description">
+                                                    <p>
+                                                        {characterDetails.description
+                                                            ? characterDetails.description
+                                                            : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </Content>
+
+                                        <SectionTitle
+                                            title={`${characterDetails.name}'s comics`}
                                         />
-                                    </div>
 
-                                    <div className="context">
-                                        <div className="name">
-                                            <h2>{characterDetails.name}</h2>
-                                        </div>
-                                        <div className="description">
-                                            <p>
-                                                {characterDetails.description
-                                                    ? characterDetails.description
-                                                    : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Content>
-
-                                <SectionTitle
-                                    title={`${characterDetails.name}'s comics`}
-                                />
-
-                                <Grid>
-                                    {comics.map((comic) => (
-                                        <ComicCard
-                                            key={`${comic.id}`}
-                                            image={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
-                                            title={comic.title}
-                                        />
-                                    ))}
-                                </Grid>
+                                        <Grid>
+                                            {comics.map((comic) => (
+                                                <ComicCard
+                                                    key={`${comic.id}`}
+                                                    image={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
+                                                    title={comic.title}
+                                                />
+                                            ))}
+                                        </Grid>
+                                    </>
+                                )}
                             </>
                         )}
                     </>

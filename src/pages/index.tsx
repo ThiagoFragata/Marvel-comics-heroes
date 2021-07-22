@@ -3,17 +3,17 @@ import React from "react";
 import Head from "next/head";
 
 import { CharactersList } from "../components/CharactersList";
-import { PageCover } from "../components/Static/PageCover";
-import { Footer } from "../components/Static/Footer";
-import { Header } from "../components/Static/Header";
 
 import { GlobalStyle } from "../styles/globals";
+import { Footer } from "../ComponentsStatic/Footer";
+import { Header } from "../ComponentsStatic/Header";
+import { PageCover } from "../ComponentsStatic/PageCover";
 
 export default function Home() {
     return (
         <>
             <Head>
-                <title>Home | Lista de hérois</title>
+                <title>Home</title>
                 <meta
                     name="description"
                     content="Aqui você encontra seu heroi da Marvel e tudo mais!"
