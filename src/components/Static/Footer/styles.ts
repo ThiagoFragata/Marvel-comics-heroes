@@ -9,4 +9,15 @@ export const Container = styled.footer`
 
     display: flex;
     justify-content: center;
+
+    a {
+        color: var(--white);
+        margin-left: .5rem;
+
+        transition: color .2s;
+
+        &:hover {
+            color: var(--red);
+        }
+    }
 `

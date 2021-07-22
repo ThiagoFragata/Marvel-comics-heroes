@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 💻 Projeto
 
-## Getting Started
+Esse projeto foi proposto como desafio da Pedido Pago para os candidatos à vaga de desenvolvedor front-end.
+O desafio pode ser visto [aqui](https://github.com/pedidopago/pp-challenge-web) e você pode ver o [figma do projeto aqui!](https://www.figma.com/file/Pea1ne97zX0EA5EIErPdMF/Marvel-Comics-Heroes?node-id=0%3A1)
 
-First, run the development server:
+## 🚀 Tecnologias
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+-   Next.js
+-   Typescript
+-   Axios
+-   Md5
+-   Styled-components
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Observações
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Minha experiência com NextJS é mínima. Fiz alguns projetos nas NLW's da rockeseat. Logo, meu código deve estar bem duvidoso, estou fazendo o curso de aceleração de carreira da rockeseat, e somente agora que estou chegando na etapa de nextJS (Chapter III), o pouco conhecimento sobre NextJS, são de estudos e muita leitura da documentação
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.tsx`.
+Tive uma experiência horrível com a [API em questão](https://developer.marvel.com/).
+Motivos:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+-   O site que hospeda a documentação está sofrendo com oscilações ou algo do tipo.
+-   Muita autenticação para uma API tão simples.
 
-## Learn More
+## 🐱‍👤 Autor
 
-To learn more about Next.js, take a look at the following resources:
+<a href="https://github.com/ThiagoFragata.png">
+ <img style="border-radius: 50%;" src="https://github.com/ThiagoFragata.png" width="100px;" alt=""/>
+ <br />
+ <sub><b>Thiago Henrique Fragata</b></sub></a> <a href="https://app.rocketseat.com.br/me/thiago-fragata-6969" title="Thiago Henrique Fragata">🚀</a>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feito com 🧡+☕ por Thiago Henrique Fragata 👋🏽 Entre em contato!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="center">
+<a href="https://www.linkedin.com/in/thiago-henrique-fragata-2603b5207/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="thiagofragata" height="20" width="20" /></a>
+<a href="https://www.facebook.com/tfragata" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/facebook.svg" alt="thiagofragata" height="20" width="20" /></a>
+<a href="https://www.instagram.com/_thiagofragata/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" alt="thiagofragata" height="20" width="20" /></a>
+</p>

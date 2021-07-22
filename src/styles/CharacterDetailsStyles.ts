@@ -18,6 +18,7 @@ export const Content = styled.div`
     .containerImage {
         img {
             border: 4px solid var(--black);
+            border-radius: .25rem;
             height: 100%;
         }
     }
@@ -38,6 +39,7 @@ export const Content = styled.div`
                 color: var(--white);
                 font-size: 1.5rem;
                 font-weight: 700;
+                border-radius: .25rem;
             }
         }
 
@@ -47,6 +49,7 @@ export const Content = styled.div`
             border-top: 4px solid var(--black);
             border-right: 4px solid var(--black);
             border-bottom: 4px solid var(--black);
+            border-radius: .25rem;
             color: var(--black);
 
             display: flex;

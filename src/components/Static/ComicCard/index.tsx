@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Container } from './styles';
 
-export default function ComicCard({ image, title }: any) {
+export function ComicCard({ image, title }: any) {
   return (
     <Container>
       <div>

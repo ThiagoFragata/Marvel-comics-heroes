@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import md5 from "md5";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import ComicCard from "../components/Static/ComicCard";
-import { Footer } from "../components/Static/Footer";
+
+import Head from "next/head";
+import { useRouter } from "next/router";
+
 import { Header } from "../components/Static/Header";
 import { SectionTitle } from "../components/Static/SectionTitle";
-import { api } from "../services/api";
+import { ComicCard } from "../components/Static/ComicCard";
+import { Footer } from "../components/Static/Footer";
+
 import { Container, Content, Grid } from "../styles/CharacterDetailsStyles";
 import { GlobalStyle } from "../styles/globals";
 
@@ -15,6 +17,9 @@ const privateKey = "0eb8fba0c55ecdd5ea438a2c7add3ade14481425";
 const publicKey = "20a812bb3e9adaf952b5a9af769aeb94";
 const marvelKey = timeStamp + privateKey + publicKey;
 const hash = md5(marvelKey);
+
+import md5 from "md5";
+import { api } from "../services/api";
 
 interface Character {
     name: string;
@@ -70,7 +75,18 @@ export default function CharacterDetail() {
 
     return (
         <>
-            <GlobalStyle />
+            <Head>
+                <title>Detalhes Hero</title>
+                <meta
+                    name="description"
+                    content="Aqui você encontra seu heroi da Marvel e tudo mais!"
+                />
+                <link
+                    rel="shortcut icon"
+                    href="favicon.ico"
+                    type="image/x-icon"
+                />
+            </Head>
             <Header />
             <Container>
                 {hasSpinner ? (
@@ -79,7 +95,9 @@ export default function CharacterDetail() {
                     <>
                         {characterDetails && (
                             <>
-                                <SectionTitle title={`Um pouco sobre ${characterDetails.name}`} />
+                                <SectionTitle
+                                    title={`Um pouco sobre ${characterDetails.name}`}
+                                />
 
                                 <Content>
                                     <div className="containerImage">
@@ -122,6 +140,7 @@ export default function CharacterDetail() {
                 )}
             </Container>
             <Footer />
+            <GlobalStyle />
         </>
     );
 }
