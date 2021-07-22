@@ -1,7 +1,12 @@
 ## 💻 Projeto
 
 Esse projeto foi proposto como desafio da Pedido Pago para os candidatos à vaga de desenvolvedor front-end.
-O desafio pode ser visto [aqui](https://github.com/pedidopago/pp-challenge-web) e você pode ver o [figma do projeto aqui!](https://www.figma.com/file/Pea1ne97zX0EA5EIErPdMF/Marvel-Comics-Heroes?node-id=0%3A1)
+O desafio pode ser visto [aqui](https://github.com/pedidopago/pp-challenge-web) 
+[figma do projeto aqui!](https://www.figma.com/file/Pea1ne97zX0EA5EIErPdMF/Marvel-Comics-Heroes?node-id=0%3A1)
+
+## Demo
+
+[Marvel-Comics-Heroes](https://marvel-comics-heroes.vercel.app/)
 
 ## 🚀 Tecnologias
 
