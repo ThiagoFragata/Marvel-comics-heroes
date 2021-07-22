@@ -1,7 +1,5 @@
+import { Container } from "./styles";
+
 export function Footer() {
-    return (
-        <>
-            <h1>Footer</h1>
-        </>
-    );
+    return <Container>Desenvolvido por Thiago Henrique Fragata</Container>;
 }

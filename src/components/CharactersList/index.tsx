@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
+import { Container, Grid } from "./styles";
+
 import md5 from "md5";
 import { CardCharacter } from "../CardCharacter";
 import { Pagination } from "../Static/Pagination";
+import { SectionTitle } from "../Static/SectionTitle";
 
 // example
 // ts=1&apikey=1234&hash=ffd275c5130566a2916217b101f26150
@@ -58,23 +61,25 @@ export function CharactersList() {
     }, [offset]);
 
     return (
-        <div>
-            <h1>charactersList</h1>
+        <Container>
+            <SectionTitle title="Lista de Hérois" />
             <ul>
                 {hasSpinner ? (
                     <h1>Loading...</h1>
                 ) : (
                     <>
-                        {characters.map((character) => {
-                            return (
-                                <CardCharacter
-                                    key={character.id}
-                                    id={character.id}
-                                    name={character.name}
-                                    thumbnail={`${character.thumbnail.path}/standard_fantastic.${character.thumbnail.extension}`}
-                                />
-                            );
-                        })}
+                        <Grid>
+                            {characters.map((character) => {
+                                return (
+                                    <CardCharacter
+                                        key={character.id}
+                                        id={character.id}
+                                        name={character.name}
+                                        thumbnail={`${character.thumbnail.path}/standard_fantastic.${character.thumbnail.extension}`}
+                                    />
+                                );
+                            })}
+                        </Grid>
 
                         {requestInfo && (
                             <Pagination
@@ -87,6 +92,6 @@ export function CharactersList() {
                     </>
                 )}
             </ul>
-        </div>
+        </Container>
     );
 }

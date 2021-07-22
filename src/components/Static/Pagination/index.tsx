@@ -1,3 +1,5 @@
+import { Container } from "./styles";
+
 const MAX_ITEMS = 9;
 const CURRENT_ITEM = 1;
 const MAX_LEFT = (MAX_ITEMS - CURRENT_ITEM) / 2;
@@ -9,14 +11,18 @@ interface PaginationProps {
     setOffset: number | any;
 }
 
-export function Pagination({ limit, total, offset, setOffset }:PaginationProps) {
-    
+export function Pagination({
+    limit,
+    total,
+    offset,
+    setOffset,
+}: PaginationProps) {
     const currentPage = offset ? offset / limit + 1 : 1;
     const countPages = Math.ceil(total / limit);
     const firstPage = Math.max(currentPage - MAX_LEFT, 1);
 
     return (
-        <>
+        <Container>
             <ul>
                 {Array.from({ length: Math.min(MAX_ITEMS, countPages) })
                     .map((_, index) => index + firstPage)
@@ -33,6 +39,6 @@ export function Pagination({ limit, total, offset, setOffset }:PaginationProps) 
                         </li>
                     ))}
             </ul>
-        </>
+        </Container>
     );
 }

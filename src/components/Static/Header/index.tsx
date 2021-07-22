@@ -1,7 +1,9 @@
+import { Container } from "./styles";
+
 export function Header() {
     return (
-        <>
-            <h1>Marvel Comics Heroes</h1>
-        </>
+        <Container>
+            <h1 className="content">Marvel Comics Heroes</h1>
+        </Container>
     );
 }

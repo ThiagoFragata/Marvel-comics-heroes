@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
+import { Container, Content } from "./styles";
 import Link from "next/link";
 
 interface CardCharacterProps {
@@ -10,25 +10,24 @@ interface CardCharacterProps {
 
 export function CardCharacter({ id, name, thumbnail }: CardCharacterProps) {
     return (
-        <>
+        <Container>
             <Link
                 href={{
-                    pathname: "/CharacterDetail/",
+                    pathname: "/characterDetail/",
                     query: {
                         id,
                     },
                 }}
             >
                 <a>
-                    <li>
-                        <img
-                            src={thumbnail}
-                            alt={name}
-                        />
-                        <h1>{name}</h1>
-                    </li>
+                    <Content>
+                        <div>
+                            <img src={thumbnail} alt={name} />
+                        </div>
+                        <h3>{name}</h3>
+                    </Content>
                 </a>
             </Link>
-        </>
+        </Container>
     );
 }
